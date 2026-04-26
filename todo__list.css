@@ -1,0 +1,149 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body{
+    background-color: rgba(151, 151, 151, 0.196)
+}
+.app {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+  max-width: 400px;
+  margin: 50px auto;
+}
+.header{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.header img{
+    width: 80px;
+    border: 1px solid black;
+    position: relative;
+    clip-path: inset(10px 12px round 10px)
+}
+.title{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.addtodo{
+    display: flex;
+    width: 100%;
+    gap:10px;
+    margin-bottom: 20px;
+}
+
+.addtodo input{
+    flex: 1;
+    height: 40px;
+    border: 1px solid rgba(0, 0, 0, 0.127);
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size:15px;
+    background-color: rgba(0, 0, 0, 0.063);
+}
+.addtodo button{
+    width: 100px;
+    border-radius:5px ;
+    border: none;
+    background-color: rgb(94, 115, 251);
+}
+.addtodo button:active{
+    background-color:rgb(52, 68, 172); ;
+}
+
+.tabs{
+    display: flex;
+    height: 40px;
+    margin-bottom: 20px;
+     background-color: rgb(248, 248, 248);
+}
+.tab__btn{
+    flex-grow: 1;
+    border: none;
+    font-weight: bold;
+    border-radius: 10px;
+    background-color: rgb(248, 248, 248);
+}
+.tab__btn:hover{
+     background-color: rgb(227, 227, 227);
+}
+
+.active{
+    background-color: rgb(227, 227, 227);
+}
+
+.tab__number{
+  background: #4e4e4e21;
+  color: white;
+  padding: 2px 6px;
+  font-size: 12px;
+  border-radius: 999px;
+  margin-left: 6px;
+  color: black;
+}
+
+.todolist{
+    margin-bottom: 20px;
+    overflow: auto;
+    max-height: 350px;
+    min-width: 0;
+}
+
+.todolist li{
+    list-style: none;
+    display: flex;
+    align-items: center;
+     background: white;
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  margin-bottom: 10px;
+}
+
+.todolist input[type="checkbox"]{
+    width: 20px;
+    height: 20px;
+}
+.todolist span{
+    margin-left: 10px;
+    font-size: 20px;
+    flex: 1;
+    overflow: auto;
+    white-space: wrap;
+}
+footer{
+    margin-top: auto;
+    gap: 5px;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+footer .btn__select{
+    padding: 5px 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-right: auto;
+}
+footer .btn__select:active{
+    background-color: rgb(153, 153, 153);
+}
+footer i{
+    color: rgba(66, 66, 66, 0.803);
+}
+footer span{
+    color: red;
+    cursor: pointer;
+}
+footer span:active{
+    color: rgb(201, 3, 3);
+}
+
+.hidden{
+    display:none;
+}

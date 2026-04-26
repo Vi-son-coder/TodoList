@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="todo__list.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+    <title>to-do list</title>
+  </head>
+  <body>
+    <div class="app">
+      <header class="header">
+        <img src="./icontodo.png" alt="" />
+        <div class="title">
+          <h1>My Todo List</h1>
+          <span>My plan today</span>
+        </div>
+      </header>
+
+      <form class="addtodo">
+        <input type="text" placeholder="What do you want to do?" />
+        <button class="btn__add">Add</button>
+      </form>
+
+      <div class="tabs">
+        <button class="tab__btn tabs__all">
+          All<span class="tab__number tab__all"></span>
+        </button>
+        <button class="tab__btn tabs__active">
+          Active<span class="tab__number"></span>
+        </button>
+        <button class="tab__btn tabs__completed">
+          Completed<span class="tab__number"></span>
+        </button>
+      </div>
+
+      <div >
+        <ul class="todolist"></ul>
+      </div>
+      <footer>
+        <button type="button" class="btn__select">Chọn</button>
+        <i class="fa-solid fa-trash"></i>
+        <span class="clear">Clear checke</span>
+      </footer>
+    </div>
+  </body>
+  <script src="./todo__list.js" defer></script>
+</html>
