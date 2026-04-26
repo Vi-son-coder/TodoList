@@ -27,9 +27,22 @@ function display() {
     if (SelectMod == true) {
       doneCb.classList.add("hidden");
       deleteCb.classList.remove("hidden");
+      btn__select.textContent = "Hủy";
+      btn__clearCpl.innerHTML = "Xóa";
+    } else {
+      btn__select.textContent = "Chọn";
+      todo__list = todo__list.map((cancel) => {
+        if (cancel.selected == true) {
+          cancel.selected = false;
+        }
+        return cancel;
+      });
+      btn__clearCpl.innerHTML = "Clear checked";
     }
+
     deleteCb.checked = todo.selected;
     doneCb.checked = todo.done;
+
     list.appendChild(li);
   });
 }
@@ -65,19 +78,6 @@ function number__all() {
 
 btn__select.addEventListener("click", () => {
   SelectMod = !SelectMod;
-  if (SelectMod == true) {
-    btn__select.textContent = "Hủy";
-    btn__clearCpl.innerHTML = "Xóa";
-  } else {
-    btn__select.textContent = "Chọn";
-    todo__list = todo__list.map((cancel) => {
-      if (cancel.selected == true) {
-        cancel.selected = false;
-      }
-      return cancel;
-    });
-    btn__clearCpl.innerHTML = "Clear checked";
-  }
   display();
 });
 
@@ -118,17 +118,14 @@ btn__add.addEventListener("click", (e) => {
 btn__clearCpl.addEventListener("click", (c) => {
   if (btn__clearCpl.textContent.includes("Clear checked")) {
     todo__list = todo__list.map((todo) => {
-      if (todo.done == true){
+      if (todo.done == true) {
         todo.done = false;
       }
       return todo;
     });
   } else if (btn__clearCpl.textContent.includes("Xóa")) {
-    todo__list = todo__list.filter((todo) => {
-      if(todo.selected == false){
-        return true;
-      }
-    });
+    todo__list = todo__list.filter((todo) => !todo.selected);
+    SelectMod = false;
   }
   display();
 });
