@@ -1,5 +1,5 @@
 let list = document.querySelector(".todolist");
-let btn__add = document.querySelector(".btn__add");
+let form__add = document.querySelector(".addtodo");
 let btn__select = document.querySelector(".btn__select");
 let btn__clearCpl = document.querySelector(".clear");
 
@@ -8,6 +8,17 @@ let todo__list = [];
 
 function display() {
   list.innerHTML = "";
+
+  if (todo__list.length == 0) {
+    SelectMod = false;
+    btn__select.textContent = "Chọn";
+    btn__clearCpl.innerHTML = "Clear checked";
+    number__all();
+    number__active();
+    number__completed();
+    return;
+  }
+
   todo__list.forEach((todo) => {
     let li = document.createElement("li");
     li.innerHTML = `
@@ -31,12 +42,7 @@ function display() {
       btn__clearCpl.innerHTML = "Xóa";
     } else {
       btn__select.textContent = "Chọn";
-      todo__list = todo__list.map((cancel) => {
-        if (cancel.selected == true) {
-          cancel.selected = false;
-        }
-        return cancel;
-      });
+      SelectModFalse();
       btn__clearCpl.innerHTML = "Clear checked";
     }
 
@@ -45,10 +51,12 @@ function display() {
 
     list.appendChild(li);
   });
+  number__all();
+  number__active();
+  number__completed();
 }
 
 function add__todo(e) {
-  e.preventDefault();
   let input = document.querySelector(".addtodo input");
   let input__todo = input.value.trim();
 
@@ -66,14 +74,28 @@ function add__todo(e) {
   display();
 }
 
-function number__all() {
-  let dem = 0;
-  let number = document.querySelector(".tab__all");
-
-  todo__list.forEach((todo) => {
-    dem++;
+function SelectModFalse() {
+  todo__list = todo__list.map((cancel) => {
+    cancel.selected = false;
+    return cancel;
   });
-  number.innerHTML = `${dem}`;
+}
+
+function number__all() {
+  let number = document.querySelector(".tab__all");
+  number.innerHTML = `${todo__list.length}`;
+}
+
+function number__active() {
+  let number = document.querySelector(".tab__active");
+  let dem = todo__list.filter((Todo__active) => !Todo__active.done);
+  number.innerHTML = `${dem.length}`;
+}
+
+function number__completed(){
+  let number = document.querySelector(".tab__completed");
+  let dem = todo__list.filter(completed => completed.done);
+  number.innerHTML = `${dem.length}`;
 }
 
 btn__select.addEventListener("click", () => {
@@ -110,7 +132,8 @@ list.addEventListener("change", (todo) => {
   }
 });
 
-btn__add.addEventListener("click", (e) => {
+form__add.addEventListener("submit", (e) => {
+  e.preventDefault();
   add__todo(e);
   number__all();
 });
